@@ -1,0 +1,4 @@
+<?PHP
+class classConexao{
+	pro
+}

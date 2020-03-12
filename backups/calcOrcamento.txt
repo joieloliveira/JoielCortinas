@@ -1,0 +1,47 @@
+function orcamento(cortina){
+    
+    $.getJSON("php/db_joielCortinas.php", function(dados) {
+        var valorTecido = parseInt(dados.valor);  
+        alt = document.querySelector('#altura');
+        lag = document.querySelector('#largura');
+        //entreComAlt = document.getElementById('entreComAlt')
+        //entreComLag = document.getElementById('entreComLag');
+        resltOrcamento = document.querySelector('#resltOrcamento');
+        aviso = document.getElementById('aviso')
+
+        largura=lag.value;
+        altura=alt.value;
+        verificaAltura=altura;
+        verificaAltura=verificaAltura*verificaAltura;
+
+
+        //orcamentoCortina=largura*valorTecido*4+250;
+        if(cortina=='americana'){
+            orcamentoCortina=largura*valorTecido*3+250;
+        }
+
+        if(largura=="" || altura=="" || largura==0 || altura==0){
+            alert('Entre com altur a e largua para calcular o orçamento');
+        }else
+
+        if(!orcamentoCortina){
+            alert('Não use virgula para separar os numeros, use um ponto "."');
+        }else
+
+        if(!verificaAltura){
+            alert('Não use virgula para separar os numeros, use um ponto "."');
+        }else
+
+        if(altura>2.70){
+            aviso.textContent = 'Presado cliente para a confecção de uma cortina acima de 2,70m solicite um orçamento personalizado, entrando em contato pelo numero(zap): (91)-98936-2851. Falar com Joiel. Para cortinas acima de 2,70 algumas explicações terão que ser dadas para evitar maiores transtornos.';}   
+
+        if(orcamentoCortina){
+            resltOrcamento.textContent = orcamentoCortina.toFixed(2)+' R$';
+        }      
+    });
+    
+}
+  
+
+
+
