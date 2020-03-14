@@ -56,10 +56,10 @@ function radioButtonTecido(){
 }//-----------------------------------------------------------------
 
 function radioButtonBlackout(){
-    if (document.getElementById('comBlackout').checked == true) {
-        return document.getElementById('comBlackout').value;
-    }else if(document.getElementById('semBlackout').checked == true){
-        return document.getElementById('semBlackout').value;
+    if (document.getElementById('blackout').checked == true) {
+        return document.getElementById('blackout').value;
+    }else if(document.getElementById('microfibra').checked == true){
+        return document.getElementById('microfibra').value;
     }else{return false;}
     
 }//-----------------------------------------------------------------
