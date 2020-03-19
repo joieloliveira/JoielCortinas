@@ -1,29 +1,19 @@
 <?php
+require './cortinaFabricaAbstrata.php';
 
-class cortinaFabrica{
+class cortinaFabrica extends cortinaFabricaAbstrata{
 	//variaveis da conexão 
-	public $servidor = "localhost";
-	public $usuario = "root";
-	public $senha = "";
-	public $dbname = "joielcortinas";
-	public $porta = 3308;
+	private $servidor = "localhost";
+	private $usuario = "root";
+	private $senha = "";
+	private $dbname = "joielcortinas";
+	private $porta = 3308;
 	//variaveis das cortinas
-	public $cortina;//escolhido(a)
-	public $altura;//escolhido(a)
-	public $largura;//escolhido(a)
-	public $tecido;//escolhido(a)
-	public $forro;//escolhido(a)
-	public $roloBkTs;//escolhido(a)
-	public $lucro;//escolhido(a)
+	private $tecido;//escolhido(a)
+	private $forro;//escolhido(a)
+	private $roloBkTs;//escolhido(a)
+	private $lucro;//escolhido(a)
 	//public $conn = mysqli_connect($servidor, $usuario, $senha, $dbname, $porta);
-	function cortina($cortina){		
-		$this->cortina=$cortina;
-	}
-	
-	function medidas($altura,$largura){
-		$this->altura=$altura;
-		$this->largura=$largura;
-	}
 	
 	function tecido($tecido){		
 		$this->tecido=$tecido;
@@ -54,7 +44,7 @@ class cortinaFabrica{
 			$result_usuario_tecido = "SELECT valor FROM tecidos where nome='horizontal'";
 			$resultado_usuario_tecido = mysqli_query($conn, $result_usuario_tecido);
 			$row_usuario_tecido = mysqli_fetch_assoc($resultado_usuario_tecido);
-			return(($this->altura*$this->largura*$row_usuario_tecido['valor'])+200);
+			return(($this->altura*$this->largura*$row_usuario_tecido['valor'])+150);
 		}
 		
 		// montaCortina vertical tecido
@@ -62,7 +52,7 @@ class cortinaFabrica{
 			$result_usuario_tecido = "SELECT valor FROM tecidos where nome='verticalTecido'";
 			$resultado_usuario_tecido = mysqli_query($conn, $result_usuario_tecido);
 			$row_usuario_tecido = mysqli_fetch_assoc($resultado_usuario_tecido);
-			return(($this->altura*$this->largura*$row_usuario_tecido['valor'])+200);
+			return(($this->altura*$this->largura*$row_usuario_tecido['valor'])+150);
 		}
 		
 		// montaCortina vertical pvc
@@ -70,7 +60,7 @@ class cortinaFabrica{
 			$result_usuario_tecido = "SELECT valor FROM tecidos where nome='verticalPvc'";
 			$resultado_usuario_tecido = mysqli_query($conn, $result_usuario_tecido);
 			$row_usuario_tecido = mysqli_fetch_assoc($resultado_usuario_tecido);
-			return(($this->altura*$this->largura*$row_usuario_tecido['valor'])+200);
+			return(($this->altura*$this->largura*$row_usuario_tecido['valor'])+150);
 		}
 		
 		// montaCortina rolô
