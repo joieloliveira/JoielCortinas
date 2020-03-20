@@ -102,12 +102,12 @@ class cortinaFabrica extends cortinaFabricaAbstrata{
 			$resultado_usuario_entretela = mysqli_query($conn, $result_usuario_entretela);
 			$row_usuario_entretela = mysqli_fetch_assoc($resultado_usuario_entretela);
 			//pega kite de montagem na tabela peças
-			if($this->largura<=1.5){$result_usuario_kite = "SELECT valor FROM pecas where nome='kite 1.5m'";}
-			else if($this->largura>1.5){$result_usuario_kite = "SELECT valor FROM pecas where nome='kite 2m'";}
-			$resultado_usuario_kite = mysqli_query($conn, $result_usuario_kite);
-			$row_usuario_kite = mysqli_fetch_assoc($resultado_usuario_kite);
+			//if($this->largura<=1.5){$result_usuario_kite = "SELECT valor FROM pecas where nome='kite 1.5m'";}
+			//else if($this->largura>1.5){$result_usuario_kite = "SELECT valor FROM pecas where nome='kite 2m'";}
+			//$resultado_usuario_kite = mysqli_query($conn, $result_usuario_kite);
+			//$row_usuario_kite = mysqli_fetch_assoc($resultado_usuario_kite);
 			//valor da cortina montada
-			return(($this->largura*3*$row_usuario_tecido['valor'])+($this->largura*3*$row_usuario_entretela['valor'])+($row_usuario_ilhoes['valor']*$this->largura*3*10)+($row_usuario_kite['valor'])+($row_usuario_forro['valor']*$this->largura*3)+200);
+			return(($this->largura*3*$row_usuario_tecido['valor'])+($this->largura*3*$row_usuario_entretela['valor'])+($row_usuario_ilhoes['valor']*$this->largura*3*10)+($row_usuario_forro['valor']*$this->largura*3)+180);
 		}
 		
 		// montaCortina americana
@@ -129,9 +129,9 @@ class cortinaFabrica extends cortinaFabricaAbstrata{
 			$resultado_usuario_forro = mysqli_query($conn, $result_usuario_forro);
 			$row_usuario_forro = mysqli_fetch_assoc($resultado_usuario_forro);
 			//pega trilho na tabela peças
-			$result_usuario_trilho = "SELECT valor FROM pecas where nome='trilho'";
-			$resultado_usuario_trilho = mysqli_query($conn, $result_usuario_trilho);
-			$row_usuario_trilho = mysqli_fetch_assoc($resultado_usuario_trilho);
+			//$result_usuario_trilho = "SELECT valor FROM pecas where nome='trilho'";
+			//$resultado_usuario_trilho = mysqli_query($conn, $result_usuario_trilho);
+			//$row_usuario_trilho = mysqli_fetch_assoc($resultado_usuario_trilho);
 			//pega entretela na tabela peças
 			$result_usuario_entretela = "SELECT valor FROM pecas where nome='entretela'";
 			$resultado_usuario_entretela = mysqli_query($conn, $result_usuario_entretela);
@@ -141,7 +141,7 @@ class cortinaFabrica extends cortinaFabricaAbstrata{
 			$resultado_usuario_deslizante = mysqli_query($conn, $result_usuario_deslizante);
 			$row_usuario_deslizante = mysqli_fetch_assoc($resultado_usuario_deslizante);
 			//valor da cortina montada
-			return(($this->largura*3*$row_usuario_tecido['valor'])+($this->largura*3*$row_usuario_entretela['valor'])+($row_usuario_deslizante['valor']*$this->largura*3*10)+($row_usuario_trilho['valor']*$this->largura)+($row_usuario_forro['valor']*$this->largura*3)+200);
+			return(($this->largura*3*$row_usuario_tecido['valor'])+($this->largura*3*$row_usuario_entretela['valor'])+($row_usuario_deslizante['valor']*$this->largura*3*10)+($row_usuario_forro['valor']*$this->largura*3)+180);
 		}
 	}
 }
