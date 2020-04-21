@@ -106,8 +106,14 @@ class cortinaFabrica extends cortinaFabricaAbstrata{
 			//else if($this->largura>1.5){$result_usuario_kite = "SELECT valor FROM pecas where nome='kite 2m'";}
 			//$resultado_usuario_kite = mysqli_query($conn, $result_usuario_kite);
 			//$row_usuario_kite = mysqli_fetch_assoc($resultado_usuario_kite);
+			//lucro
+			if($this->largura<=2){$lucro=180;}
+			if(($this->largura>2) && ($this->largura<=2.5)){$lucro=205;}
+			if(($this->largura>2.5) && ($this->largura<=3)){$lucro=230;}
+			if(($this->largura>3) && ($this->largura<=3.5)){$lucro=255;}
+			if($this->largura>3.5){$lucro=280;}
 			//valor da cortina montada
-			return(($this->largura*3*$row_usuario_tecido['valor'])+($this->largura*3*$row_usuario_entretela['valor'])+($row_usuario_ilhoes['valor']*$this->largura*3*10)+($row_usuario_forro['valor']*$this->largura*3)+180);
+			return(($this->largura*3*$row_usuario_tecido['valor'])+($this->largura*3*$row_usuario_entretela['valor'])+($row_usuario_ilhoes['valor']*$this->largura*3*10)+($row_usuario_forro['valor']*$this->largura*3)+$lucro);
 		}
 		
 		// montaCortina americana
@@ -116,12 +122,8 @@ class cortinaFabrica extends cortinaFabricaAbstrata{
 				$result_usuario_tecido = "SELECT valor FROM tecidos where nome='voal'";
 			}else if($this->tecido=="linho"){
 				$result_usuario_tecido = "SELECT valor FROM tecidos where nome='linho'";
-			}
-			if($this->forro=="blackout"){
-				$result_usuario_forro = "SELECT valor FROM tecidos where nome='blackout'";
-			}else if($this->forro=="microfibra"){
-				$result_usuario_forro = "SELECT valor FROM tecidos where nome='microFibra'";
-			}
+			}	
+			$result_usuario_forro = "SELECT valor FROM tecidos where nome='microFibra'";
 			//pega tecido escolhido
 			$resultado_usuario_tecido = mysqli_query($conn, $result_usuario_tecido);
 			$row_usuario_tecido = mysqli_fetch_assoc($resultado_usuario_tecido);
@@ -140,8 +142,14 @@ class cortinaFabrica extends cortinaFabricaAbstrata{
 			$result_usuario_deslizante = "SELECT valor FROM pecas where nome='deslizante'";
 			$resultado_usuario_deslizante = mysqli_query($conn, $result_usuario_deslizante);
 			$row_usuario_deslizante = mysqli_fetch_assoc($resultado_usuario_deslizante);
+			//lucro
+			if($this->largura<=2){$lucro=180;}
+			if(($this->largura>2) && ($this->largura<=2.5)){$lucro=205;}
+			if(($this->largura>2.5) && ($this->largura<=3)){$lucro=230;}
+			if(($this->largura>3) && ($this->largura<=3.5)){$lucro=255;}
+			if($this->largura>3.5){$lucro=280;}
 			//valor da cortina montada
-			return(($this->largura*3*$row_usuario_tecido['valor'])+($this->largura*3*$row_usuario_entretela['valor'])+($row_usuario_deslizante['valor']*$this->largura*3*10)+($row_usuario_forro['valor']*$this->largura*3)+180);
+			return(($this->largura*3*$row_usuario_tecido['valor'])+($this->largura*3*$row_usuario_entretela['valor'])+($row_usuario_deslizante['valor']*$this->largura*3*10)+($row_usuario_forro['valor']*$this->largura*3)+$lucro);
 		}
 	}
 }
